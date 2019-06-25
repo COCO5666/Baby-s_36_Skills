@@ -7,7 +7,7 @@ class Connect : public WebSocket::Delegate{
 	QE_SINGLETON_H(Connect);
 public:
 	enum Event {
-		//编码规范：用一个数字编码可能出现的所有事件
+		//事件编码规范：用一个数字编码可能出现的所有事件
 		ConnectServer = 1, //连接服务器事件
 		SignIn = 2, //登录事件
 		SignUp = 3, //注册事件
@@ -20,7 +20,7 @@ public:
 	};
 
 	enum Status {
-		//编码规范：用三个数字编码可能出现的所有状态，第一个数字代表事件类型，第二个数字代表造成该事件成功或失败的原因/情形/情况种类，第三个数字代表事件最终状态：0代表失败，1代表成功。
+		//状态编码规范：用三个数字编码可能出现的所有状态，第一个数字代表事件类型，第二个数字代表造成该事件成功或失败的原因/情形/情况种类，第三个数字代表事件最终状态：0代表失败，1代表成功。
 		//ConnectServer = 1, //连接服务器事件
 		ConnectServerCase1Successful = 111, //连接服务器成功，成功原因：成功建立WebSocket
 		ConnectServerCase2Failed = 120, //连接服务器错误，错误原因：已经在建立WebSocket过程中，请耐心等待响应结果

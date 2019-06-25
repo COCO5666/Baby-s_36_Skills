@@ -20,6 +20,5 @@ public:
 	Menu* set;
 private:
 	Sprite* setBg;
-	Size size;
 };
 

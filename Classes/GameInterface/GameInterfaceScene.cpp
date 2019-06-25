@@ -3,33 +3,27 @@
 #include"GameInterfaceScene.h"
 
 QE_CreateSceneFromLayer_CPP(GameInterfaceScene);
-	paths = { "." };
+	paths = { "GameInterfaceScene" };
 	QE_SetResourcesSearchDir;
-	Size size = Director::getInstance()->getWinSize();
-	auto bg=Sprite::create("GameInterfaceScene.png");
-	auto scaleX = size.width/bg->getContentSize().width;
-	auto scaleY = size.height/bg->getContentSize().height;
-	bg->setScale(scaleX,scaleY);
-	bg->setPosition(Vec2(size.width/2,size.height/2));
-	this->addChild(bg);
-	MenuItemImage *solo=MenuItemImage::create("bg.png","bg.png",CC_CALLBACK_0(GameInterfaceScene::enterMap,this));
-	solo->setPosition(Vec2(size.width/4*2,280));
+	QE_addBgSprite;
+
+	MenuItemImage *solo=MenuItemImage::create("beginGame.png","beginGame.png",CC_CALLBACK_0(GameInterfaceScene::enterMap,this));
+	solo->setPosition(Vec2(winSize.width/4*2,280));
 	
 	MenuItemImage *ex=MenuItemImage::create("quit.png","quit.png",CC_CALLBACK_0(GameInterfaceScene::end,this));
-	ex->setPosition(Vec2(size.width-35,50));
+	ex->setPosition(Vec2(winSize.width-35,50));
 	
-	MenuItemImage *Net=MenuItemImage::create("xianshang1.png","xianshang1.png",CC_CALLBACK_0(GameInterfaceScene::enterNet,this));
-	Net->setPosition(Vec2(size.width/4*2,200));
+	MenuItemImage *Net=MenuItemImage::create("beginNetworkGame.png","beginNetworkGame.png",CC_CALLBACK_0(GameInterfaceScene::enterNet,this));
+	Net->setPosition(Vec2(winSize.width/4*2,200));
 	
-	MenuItemImage *music=MenuItemImage::create("set.png","set.png",CC_CALLBACK_0(GameInterfaceScene::setLayer,this));
-	music->setPosition(Vec2(size.width/4*2,120));
+	MenuItemImage *music=MenuItemImage::create("setting.png", "setting.png",CC_CALLBACK_0(GameInterfaceScene::setLayer,this));
+	music->setPosition(Vec2(winSize.width/4*2,120));
 	
 	set=Menu::create(solo,ex,Net,music,NULL);
 	set->setPosition(Vec2(0,0));
 	//set->setVisible(true);
 	this->addChild(set);
 	set->setTag(1);
-	//startAnimate();
 	SimpleAudioEngine::getInstance()->playBackgroundMusic("backmusic1.mp3");
 
 	return true;
@@ -37,10 +31,6 @@ QE_CreateSceneFromLayer_CPP(GameInterfaceScene);
 }
 void GameInterfaceScene::setLayer( )
 {
-	//进入回调界面要求原来的菜单不可用
-	//set->setVisible(false);
-	//添加设置面板
-	//this->get
 	set->setEnabled(false);
 
 	setBg = Sprite::create("mianban.png");

@@ -47,7 +47,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
+    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::EXACT_FIT);
     auto frameSize = glview->getFrameSize();
     // if the frame's height is larger than the height of medium size.
     if (frameSize.height > mediumResolutionSize.height)
@@ -79,11 +79,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	//主场景（入口）
 	//scene = MapOne::createScene();
-	//动物园ZOO
+	//动物园场景
 	//scene = MapTwo::createScene();
-	//学校School
+	//医院场景
+	//scene = MapThere::createScene();
+	//商店场景
+	//scene = MapFour::createScene();
+	//学校场景
 	//scene = MapFive::createScene();
-	//战斗
+	//坏人诱骗场景
 	//scene = Battle::createScene();
 	
 	//连接服务器界面
